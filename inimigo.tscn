@@ -45,13 +45,15 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ii7eh"]
-radius = 49.0
-height = 130.0
+radius = 37.0
+height = 96.0
 
 [node name="inimigo" type="RigidBody2D"]
+gravity_scale = 0.0
 script = ExtResource("1_qo4lm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_6jl5l")
 animation = &"andando"
 frame = 1
@@ -63,3 +65,5 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ii7eh")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
