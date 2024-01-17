@@ -36,7 +36,6 @@ radius = 40.0
 height = 104.0
 
 [node name="Jogador" type="Area2D"]
-position = Vector2(71, 159)
 script = ExtResource("1_g4gdu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -46,5 +45,4 @@ sprite_frames = SubResource("SpriteFrames_oybly")
 animation = &"cima"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_ivclj")

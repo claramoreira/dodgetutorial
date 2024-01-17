@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2caeguw51b8r"]
+
+[ext_resource type="PackedScene" uid="uid://cms5y5w4at0i2" path="res://jogador.tscn" id="1_6ma3l"]
+[ext_resource type="Script" path="res://principal.gd" id="1_ua2le"]
+[ext_resource type="PackedScene" uid="uid://cwxmejgyyb5lp" path="res://inimigo.tscn" id="2_kcpxc"]
+
+[sub_resource type="Curve2D" id="Curve2D_ie8wy"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1, 1, 0, 0, 0, 0, 479, 0, 0, 0, 0, 0, 480, 720, 0, 0, 0, 0, -1, 721, 0, 0, 0, 0, -1, 1)
+}
+point_count = 5
+
+[node name="principal" type="Node"]
+script = ExtResource("1_ua2le")
+inimigo = ExtResource("2_kcpxc")
+
+[node name="Jogador" parent="." instance=ExtResource("1_6ma3l")]
+position = Vector2(255, 337)
+
+[node name="inicioTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="pontuacaoTimer" type="Timer" parent="."]
+
+[node name="inimigoTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="posicaoInicial" type="Marker2D" parent="."]
+position = Vector2(240, 450)
+
+[node name="caminhoInimigo" type="Path2D" parent="."]
+curve = SubResource("Curve2D_ie8wy")
+
+[node name="spawnInimigo" type="PathFollow2D" parent="caminhoInimigo"]
+position = Vector2(-1, 1)
+rotation = -0.00208333
