@@ -13,11 +13,11 @@ func _process(delta):
 func game_over():
 	$pontuacaoTimer.stop()
 	$inimigoTimer.stop()
-	$HUD.exibir_gameover()
+	$HUD.exibir_game_over()
 
 func novo_jogo():
 	score = 0
-	#$Jogador.start($posicaoInicial.position)
+	$Jogador.start($posicaoInicial.position)
 	$inicioTimer.start()
 	$HUD.exibir_mensagem("Prepare-se")
 	$HUD.atualiza_score(score)
