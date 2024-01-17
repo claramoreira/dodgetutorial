@@ -7,8 +7,7 @@ extends RigidBody2D
 func _ready():
 	var tipos_inimigo = $AnimatedSprite2D.get_sprite_frames().get_animation_names()
 	$AnimatedSprite2D.animation = tipos_inimigo[randi() % tipos_inimigo.size()]
-
-
+	$AnimatedSprite2D.play()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
