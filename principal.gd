@@ -5,7 +5,6 @@ var score
 
 func _ready():
 	randomize()
-	novo_jogo()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -14,11 +13,14 @@ func _process(delta):
 func game_over():
 	$pontuacaoTimer.stop()
 	$inimigoTimer.stop()
+	$HUD.exibir_gameover()
 
 func novo_jogo():
 	score = 0
 	#$Jogador.start($posicaoInicial.position)
 	$inicioTimer.start()
+	$HUD.exibir_mensagem("Prepare-se")
+	$HUD.atualiza_score(score)
 
 func _on_inicio_timer_timeout():
 	$inimigoTimer.start()
@@ -26,6 +28,7 @@ func _on_inicio_timer_timeout():
 
 func _on_pontuacao_timer_timeout():
 	score += 1
+	$HUD.atualiza_score(score)
 
 func _on_inimigo_timer_timeout():
 	$caminhoInimigo/spawnInimigo.progress = randi()

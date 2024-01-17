@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2caeguw51b8r"]
+[gd_scene load_steps=6 format=3 uid="uid://b2caeguw51b8r"]
 
 [ext_resource type="PackedScene" uid="uid://cms5y5w4at0i2" path="res://jogador.tscn" id="1_6ma3l"]
 [ext_resource type="Script" path="res://principal.gd" id="1_ua2le"]
 [ext_resource type="PackedScene" uid="uid://cwxmejgyyb5lp" path="res://inimigo.tscn" id="2_kcpxc"]
+[ext_resource type="PackedScene" uid="uid://56wre44r4cg2" path="res://hud.tscn" id="4_qoxit"]
 
 [sub_resource type="Curve2D" id="Curve2D_ie8wy"]
 _data = {
@@ -36,7 +37,10 @@ curve = SubResource("Curve2D_ie8wy")
 position = Vector2(-1, 1)
 rotation = -0.00208333
 
+[node name="HUD" parent="." instance=ExtResource("4_qoxit")]
+
 [connection signal="hit" from="Jogador" to="." method="game_over"]
 [connection signal="timeout" from="inicioTimer" to="." method="_on_inicio_timer_timeout"]
 [connection signal="timeout" from="pontuacaoTimer" to="." method="_on_pontuacao_timer_timeout"]
 [connection signal="timeout" from="inimigoTimer" to="." method="_on_inimigo_timer_timeout"]
+[connection signal="start_game" from="HUD" to="." method="novo_jogo"]
