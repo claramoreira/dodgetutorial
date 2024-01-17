@@ -12,7 +12,7 @@ point_count = 5
 
 [node name="principal" type="Node"]
 script = ExtResource("1_ua2le")
-inimigo = ExtResource("2_kcpxc")
+Inimigo = ExtResource("2_kcpxc")
 
 [node name="Jogador" parent="." instance=ExtResource("1_6ma3l")]
 position = Vector2(255, 337)
@@ -35,3 +35,8 @@ curve = SubResource("Curve2D_ie8wy")
 [node name="spawnInimigo" type="PathFollow2D" parent="caminhoInimigo"]
 position = Vector2(-1, 1)
 rotation = -0.00208333
+
+[connection signal="hit" from="Jogador" to="." method="game_over"]
+[connection signal="timeout" from="inicioTimer" to="." method="_on_inicio_timer_timeout"]
+[connection signal="timeout" from="pontuacaoTimer" to="." method="_on_pontuacao_timer_timeout"]
+[connection signal="timeout" from="inimigoTimer" to="." method="_on_inimigo_timer_timeout"]
